@@ -1,0 +1,316 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>EZ-LEARN</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="icon" href="ez-learn.png" type="image/x-icon">
+<link rel="stylesheet" href="../layout/styles/layout.css" type="text/css" />
+<script type="text/javascript" src="../layout/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="../layout/scripts/jquery.jcarousel.pack.js"></script>
+<script type="text/javascript" src="../layout/scripts/jquery.jcarousel.setup.js"></script>
+<script src="login.js">
+</script>
+<script src="alogin.js">
+</script>
+<script>
+function check()
+
+
+{
+	if(validate())
+	{
+		var uname=document.rform.uname.value;
+		var password=document.rform.password.value;
+		var xmlhttp;
+		if(window.XMLHttpRequest)
+		{
+			xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function()
+		{
+			
+			if(xmlhttp.readyState==4&&xmlhttp.status==200)
+			{
+				var returns=xmlhttp.responseText;
+				
+				returns = returns.trim();
+				
+				if(returns=="true")
+				{
+					window.location.assign("http://localhost:8080/elearn/pages/dashboard.html");
+				}
+				else
+				{
+					document.getElementById("ajax").innerHTML="Enter a valid username and password!";
+				}
+			}
+		};
+		var parameters="uname="+uname+"&password="+password
+		xmlhttp.open("POST","http://localhost:8080/web_technology/pages/login.jsp",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		xmlhttp.send(parameters);
+	}
+}
+function acheck()
+{
+	if(avalidate())
+	{
+		var uname=document.aform.auname.value;
+		var password=document.aform.apassword.value;
+		var xmlhttp;
+		if(window.XMLHttpRequest)
+		{
+			xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function()
+		{
+		
+			if(xmlhttp.readyState==4&&xmlhttp.status==200)
+			{
+				var returns=xmlhttp.responseText;
+				<!--document.getElementById("ajax1").innerHTML=returns;-->
+				if(returns=="true")
+				{
+					window.location.assign("http://localhost:8080/elearn/pages/receive.jsp");
+				}
+				else
+				{
+					document.getElementById("ajax1").innerHTML="Enter a valid username and password!";
+					document.getElementById("ajax1").innerHTML=returns;
+				}
+			}
+		};
+		var parameters="auname="+uname+"&apassword="+password
+		xmlhttp.open("POST","http://localhost:8080/elearn/admin",true);
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		xmlhttp.send(parameters);
+	}
+}
+</script>
+
+	  <style>
+form {
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #000000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+
+
+
+.container {
+    padding: 16px;
+    background-color: #b2c629;
+}
+span.psw {
+    float: left;
+    padding-top: 16px;
+}
+
+
+
+</style>
+<style>
+div.absolute {
+    display: inline-block;
+	float: left;
+	  position: absolute;
+    top: 70px;
+    left: 0;
+    width: 200px;
+    height: 100px;
+    
+
+}
+div.lute {
+    display: inline-block;
+	float: right;
+	  position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    
+
+}
+</style>
+</head>
+<body id="top">
+
+<div class="wrapper col1">
+
+  <div id="header">
+  <img src="ez-learn.png" alt="evolve"  width="40" height="35">
+    <div id="logo">
+      <h1> <a href="index.html">EZ-LEARN</a></h1>
+      <p>&nbsp&nbsp&nbsp&nbspEach One Teach One</p>
+	 
+    </div>
+	
+    <div id="topnav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="aboutus.html">About us</a></li>
+		<li><a href="courses.html">Courses</a></li>
+        <li><a href="#">Login</a>
+          <ul>
+            <li><a href="slogin.html">Student</a></li>
+            <li class="active"><a href="mlogin.html">Member</a></li>
+          </ul>
+        </li>
+		
+        <li class="last"><a href="register.html">Register</a></li>
+		
+	
+		
+		<!--<li class="last"><img src="images/evolve.png" alt="evolve"  width="200" height="40" ></li>-->
+      </ul>
+	  
+    </div>
+	
+    <br class="clear" />
+  </div>
+</div>
+
+<div class="wrapper col2">
+  <div id="featured_slide">
+    <div id="featured_content">
+      <ul>
+        <li><img src="../images/demo/1.gif" alt="" />
+          <div class="floater">
+            <h2>Interactive Content,Well Organized</h2>
+            <p>EZ-LEARN offers you a high quality World class  education with interactive content which is well organized and taught.Not just that we provide E-Learning solutions but also helping poor people around the globe to actively collaborate with us in this learning experience</p>
+            <p class="readmore"><a href="aboutus.html" >About us &raquo;</a></p>
+          </div>
+        </li>
+        <li><img src="../images/demo/2.gif" alt="" />
+          <div class="floater">
+            <h2>Experienced Team,around the globe</h2>
+            <p>We're a diverse team that has come together to work on an audacious mission: to provide a free education for anyone, anywhere. We are developers, teachers & designers who passionately believe in inspiring the world to learn. A few great people can make a big difference.</p>
+            <p class="readmore"><a href="aboutus.html">About us &raquo;</a></p>
+          </div>
+        </li>
+        <li><img src="../images/demo/3.gif" alt="" />
+          <div class="floater">
+            <h2>For Free ,For Everyone</h2>
+            <p>No ads, no subscriptions. We are a not-for-profit because we believe in a free, world-class education for anyone, anywhere. We rely on our community of thousands of volunteers and donors. Learn more about getting involved today.</p>
+            <p class="readmore"><a href="aboutus.html">About us&raquo;</a></p>
+          </div>
+        </li>
+		
+      </ul>
+	  
+    </div>
+    <a href="javascript:void(0);" id="featured-item-prev"><img src="../layout/images/prev.png" alt="" /></a> <a href="javascript:void(0);" id="featured-item-next"><img src="../layout/images/next.png" alt="" /></a> 
+	</div>
+</div>
+
+<div class="wrapper col3">
+  <div id="container">
+    <div class="homepage">
+      <br class="clear" />
+	  <h2>Member Login</h2>
+	  <form name="aform"  method="post">
+
+
+  <div class="container">
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="auname" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="apassword" required>
+	       
+<p id="ajax1" style="text-align:center;"></p>
+        
+    <button type="button" onClick="acheck()">Login</button>
+	
+
+  </div>
+
+  
+   
+  <span class="psw"> Are you a Student?<a href="slogin.html">Click Here</a></span>
+
+  </div>
+
+</form>
+
+    </div>
+  </div>
+  <br><br><br><br>
+</div>
+
+<div class="wrapper col4">
+  <div id="footer">
+    <div class="box1">
+      <h2>What We Do</h2>
+      <img class="imgl" src="../images/demo/imgl.gif" alt="" height="100" width="150"/>
+      <p>We go for the latest commercial and open source tools to create quality content for everyone. We learn experientially, that is, we work on real problems with real methods, and seek to understand the foundations of those methods. A variety of cutting edge technologies are used in different parts of our products with the goal to deliver only the best.</p>
+    </div>
+    <div class="box contactdetails">
+      <h2>Our Contact Details</h2>
+      <ul>
+        <li>EZ-LEARN</li>
+        <li>3rd St, Sriram Colony, Abiramapuram</li>
+        <li>Chennai</li>
+        <li>600018</li>
+        <li>Tel: (070) 412 3456</li>
+        <li>Fax:+31 6 20 87 45 18.</li>
+        <li>Email: info@ezlearn.com</li>
+        <li class="last">LinkedIn: <a href="#">EZ-LEARN</a></li>
+      </ul>
+    </div>
+    <div class="box flickrbox">
+      <h2>Snapshots</h2>
+      <div class="wrap">
+        <div class="fix"></div>
+        <div class="flickr_badge_image" id="flickr_badge_image1"><a href="#"><img src="../images/demo/c1.jpg" alt="" height="80" width="80" /></a></div>
+        <div class="flickr_badge_image" id="flickr_badge_image2"><a href="#"><img src="../images/demo/c2.jpg" alt="" height="80" width="80"/></a></div>
+        <div class="flickr_badge_image" id="flickr_badge_image3"><a href="#"><img src="../images/demo/c3.jpg" alt="" height="80" width="80"/></a></div>
+        <div class="flickr_badge_image" id="flickr_badge_image4"><a href="#"><img src="../images/demo/c4.jpg" alt="" height="80" width="80"/></a></div>
+        <div class="flickr_badge_image" id="flickr_badge_image5"><a href="#"><img src="../images/demo/c5.jpg" alt="" height="80" width="80"/></a></div>
+        <div class="flickr_badge_image" id="flickr_badge_image6"><a href="#"><img src="../images/demo/c6.jpg" alt="" height="80" width="80"/></a></div>
+        <div class="fix"></div>
+      </div> <li class="last"><a href="#">EZ-LEARN</a></li> 
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+
+<div class="wrapper col5">
+  <div id="copyright">
+    <p class="fl_left">Copyright &copy; 2017 - All Rights Reserved - <a href="#">EZ-LEARN</a></p>
+    <p class="fl_right">Developed by Ajay kumar</a></p>
+    <br class="clear" />
+  </div>
+</div>
+</body>
+</html>
